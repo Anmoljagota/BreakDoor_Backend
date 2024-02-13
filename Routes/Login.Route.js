@@ -5,6 +5,7 @@ const loginRouter = express.Router();
 const bcrypt = require("bcrypt");
 loginRouter.post("/login", (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password);
   const CheckQuery = "SELECT * FROM UserRegistrationDetails WHERE email=?";
 
   con.query(CheckQuery, [email], async (err, result) => {
@@ -17,6 +18,7 @@ loginRouter.post("/login", (req, res) => {
           const userid = result[0].UserId;
 
           await bcrypt.compare(password, hashPassword, function (err, result) {
+            console.log("i am result", result);
             if (err) {
               res.send(err);
             } else if (result) {
