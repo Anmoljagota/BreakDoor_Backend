@@ -2,6 +2,7 @@ const express = require("express");
 const RegsiterRoute = express.Router();
 const bcrypt = require("bcrypt");
 const { con } = require("../Config/db");
+
 RegsiterRoute.post("/register", (req, res) => {
   console.log("i am req.body", req.body);
   const { name, email, PhoneNumber, password, city } = req.body;
