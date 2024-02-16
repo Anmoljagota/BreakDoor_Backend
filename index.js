@@ -9,10 +9,14 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
+
+app.get("/",(req,res)=>{
+   res.send("Welcom to the Social Media Server + Database")
+})
 app.use("/", RegsiterRoute);
 app.use("/", loginRouter);
 app.use("/", Post_Route);
-app.listen(process.env.port, async () => {
+app.listen(process.env.PORT, async () => {
   try {
     await con;
     console.log(`server is running on port ${process.env.PORT}`);
@@ -20,4 +24,3 @@ app.listen(process.env.port, async () => {
     console.log(`some error ${err}`);
   }
 });
-//pp

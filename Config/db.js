@@ -5,11 +5,12 @@ const con = mysql.createPool({
   user: process.env.USER,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
+  
 });
 
 con.getConnection((err, result) => {
   if (err) {
-    console.log(err);
+    console.log("Not connected to db",err);
     return;
   }
   console.log("connected to DB");
